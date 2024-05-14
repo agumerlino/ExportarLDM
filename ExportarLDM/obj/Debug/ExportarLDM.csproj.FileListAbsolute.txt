@@ -1,0 +1,11 @@
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\bin\Debug\ExportarLDM.dll
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\bin\Debug\ExportarLDM.pdb
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\bin\Debug\EPDM.Interop.epdm.dll
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\bin\Debug\EPDM.Interop.EPDMResultCode.dll
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\bin\Debug\Interop.EdmLib.dll
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.csproj.AssemblyReference.cache
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.csproj.CoreCompileInputs.cache
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\Exportar.7D367C35.Up2Date
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.dll
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.pdb
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\bin\Debug\ExportarLDM.tlb
