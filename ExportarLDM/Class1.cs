@@ -12,6 +12,11 @@ using System.Windows.Forms;
 
 namespace ExportarLDM
 {
+    // TODO Se sugiere modularizar el código para mejorar la mantenibilidad y la legibilidad.
+    // TODO Se recomienda dividir el código en componentes más pequeños y especializados.
+    // TODO Por ejemplo, se podría crear una clase para manejar la lógica de exportación de la lista de materiales.
+    // TODO También se podría crear una clase para manejar la lógica de interacción con el usuario.
+    // TODO Además, acciones repetitivas como mostrar mensajes de error o loguear excepciones podrían ser encapsuladas en métodos.
     [ComVisible(true)]
     [Guid("3A601AFC-7007-46A7-9E71-D3BD41B5E2E2")]
     public class Class1 : IEdmAddIn5
@@ -30,6 +35,7 @@ namespace ExportarLDM
                 poInfo.mlRequiredVersionMinor = 0;
                 poCmdMgr.AddHook(EdmCmdType.EdmCmd_CardButton);
             }
+            // TODO Se recomienda loguear las excepciones para el desarrollador y proporcionar mensajes más amigables para el usuario final.
             catch (COMException ex)
             {
                 MessageBox.Show("HRESULT = 0x" + ex.ErrorCode.ToString("X") + " " + ex.Message);
@@ -63,6 +69,7 @@ namespace ExportarLDM
                     ldmForm.ShowDialog();          
                 }
             }
+            // TODO Se recomienda loguear las excepciones para el desarrollador y proporcionar mensajes más amigables para el usuario final.
             catch (COMException ex)
             {
                 MessageBox.Show("HRESULT = 0x" + ex.ErrorCode.ToString("X") + " " + ex.Message);

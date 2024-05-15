@@ -1,0 +1,27 @@
+# Carpeta .vs
+.vs/
+# Carpeta bin
+bin/
+# Carpeta obj
+obj/
+# Archivos .csproj.user
+*.csproj.user
+
+# Archivos adicionales que puedes excluir (opcional)
+
+# Archivos de configuración de Visual Studio
+*.suo
+*.user
+*.vbproj.user
+*.csproj.filters
+
+# Archivos de caché de Visual Studio
+*.db
+*.log
+
+# Archivos de prueba
+*.testsettings
+*.testresult
+
+# Archivos de solución
+*.sln.cache

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EPDM.Interop.epdm;
 
+// TODO Se recomienda utilizar bloques try-catch para manejar posibles excepciones.
+// TODO Se recomienda no utilizar los nombres predeterminados de los controles, ya que puede dificultar la comprensión del código.
+// TODO Se recomienda utilizar comentarios para explicar el propósito de las clases y métodos.
 namespace ExportarLDM.Forms
 {
     public partial class ldmForm : Form
@@ -17,7 +20,7 @@ namespace ExportarLDM.Forms
         IEdmBomView3 bomView = null;
         IEdmFile7 afile = null;
         public ldmForm(EdmBomLayout2[] ppoRetLayouts, IEdmFile7 file)
-        {
+        {   // TODO Falta habilitar/deshabilitar los botones según corresponda.
             InitializeComponent();
             afile = file;
             //Lleno un combobox con todas las ldm obtenidas
@@ -31,6 +34,7 @@ namespace ExportarLDM.Forms
         {
             //Obtengo la ldm seleccionada por medio de su nombre
             object ldmToExport = comboBox1.SelectedItem;
+            // TODO Si no se selecciona ningún ítem en el ComboBox, bomView será null y no se está tomando en cuenta en el método button1_Click.
             if (ldmToExport != null)
             {
                 bomView = (IEdmBomView3)afile.GetComputedBOM(ldmToExport, 0, "", (int)EdmBomFlag.EdmBf_AsBuilt + (int)EdmBomFlag.EdmBf_ShowSelected);
@@ -47,7 +51,7 @@ namespace ExportarLDM.Forms
             DialogResult result = saveFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
-            {             
+            {   // TODO Se usa bomView sin verificar si es null, lo que podría causar una excepción si es null.
                 bomView.SaveToCSV(saveFileDialog.FileName, true);
                 MessageBox.Show("La lista de materiales se guardo correctamente en: " + saveFileDialog.FileName);                
             }
@@ -55,6 +59,7 @@ namespace ExportarLDM.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // TODO Verificar que en release no cierre el explorer o la utilización del add-in. En caso afirmativo cambiar a this.Close().
             Application.Exit();
         }
     }
