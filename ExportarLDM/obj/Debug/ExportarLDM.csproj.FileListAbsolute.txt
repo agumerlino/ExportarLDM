@@ -9,3 +9,5 @@ C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\Exportar.7D
 C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.dll
 C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.pdb
 C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\bin\Debug\ExportarLDM.tlb
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.Forms.ldmForm.resources
+C:\Users\Disegno soft\source\repos\ExportarLDM\ExportarLDM\obj\Debug\ExportarLDM.csproj.GenerateResource.cache
