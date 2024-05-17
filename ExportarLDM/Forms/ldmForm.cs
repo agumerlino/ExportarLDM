@@ -10,36 +10,69 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EPDM.Interop.epdm;
 
+
+// -TODO Se recomienda utilizar bloques try-catch para manejar posibles excepciones.
+// -TODO Se recomienda no utilizar los nombres predeterminados de los controles, ya que puede dificultar la comprensión del código.
+// -TODO Se recomienda utilizar comentarios para explicar el propósito de las clases y métodos.
+
 namespace ExportarLDM.Forms
 {
     public partial class ldmForm : Form
     {
         IEdmBomView3 bomView = null;
         IEdmFile7 afile = null;
-        public ldmForm(EdmBomLayout2[] ppoRetLayouts, IEdmFile7 file)
-        {
+
+        // Constructor para el formulario
+        public ldmForm(EdmBomLayout2[] bomLayouts, IEdmFile7 file)
+        {  
+            // -TODO Falta habilitar/deshabilitar los botones según corresponda
             InitializeComponent();
-            afile = file;
-            //Lleno un combobox con todas las ldm obtenidas
-            foreach (var ldm in ppoRetLayouts)
+            afile = file;      
+            
+            // Lleno un combobox con todas las ldm obtenidas
+            foreach (var layout in bomLayouts)
             {
-                comboBox1.Items.Add(ldm.mbsLayoutName);
-            }
-            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+                comboBoxBoms.Items.Add(layout.mbsLayoutName);
+            }            
+            comboBoxBoms.SelectedIndexChanged += ComboBoxBoms_SelectedIndexChanged;
+            // Desactiva el boton Exportar al inicio
+            buttonExportar.Enabled = false;
         }
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        //Metedo que se ejecuta cuando se cambia la seleccion del combobox
+        private void ComboBoxBoms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Obtengo la ldm seleccionada por medio de su nombre
-            object ldmToExport = comboBox1.SelectedItem;
-            if (ldmToExport != null)
+            string message = "";
+            // Verifico si hay un item seleccionado en el combobox y habilito el boton Exportar segun corresponda
+            bool itemSeleccionado = comboBoxBoms.SelectedItem != null;            
+            buttonExportar.Enabled = itemSeleccionado;
+            try
             {
-                bomView = (IEdmBomView3)afile.GetComputedBOM(ldmToExport, 0, "", (int)EdmBomFlag.EdmBf_AsBuilt + (int)EdmBomFlag.EdmBf_ShowSelected);
+                // -TODO Si no se selecciona ningún ítem en el ComboBox, bomView será null y no se está tomando en cuenta en el método button1_Click.
+                if (itemSeleccionado)
+                {
+                //Obtengo la ldm seleccionada por medio de su nombre
+                object ldmToExport = comboBoxBoms.SelectedItem;
+                
+                    bomView = (IEdmBomView3)afile.GetComputedBOM(ldmToExport, 0, "", (int)EdmBomFlag.EdmBf_AsBuilt + (int)EdmBomFlag.EdmBf_ShowSelected);  
+                    if(bomView != null)
+                    {
+                        message = "Error al obtener la lista de materiales seleccionada";
+                    }
+                }
+            }            
+            catch (Exception ex)
+            {
+                MessageBox.Show(message,"", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //Metodo que se ejecuta cuando se hace click en el boton Exportar
+        private void buttonExportar_Click(object sender, EventArgs e)
         {
-            //Guardo la ldm en la ubicacion que desee el usuario
+            string message = "";
+            // Guardo la ldm en la ubicacion que desee el usuario
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Archivos CSV (*.csv)|*.csv";
             saveFileDialog.FileName = Path.GetFileNameWithoutExtension(afile.Name) + "BOM.csv";
@@ -47,15 +80,35 @@ namespace ExportarLDM.Forms
             DialogResult result = saveFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
-            {             
-                bomView.SaveToCSV(saveFileDialog.FileName, true);
-                MessageBox.Show("La lista de materiales se guardo correctamente en: " + saveFileDialog.FileName);                
+            {   // -TODO Se usa bomView sin verificar si es null, lo que podría causar una excepción si es null.
+                try
+                {
+                    if (bomView != null)
+                    {
+                        bomView.SaveToCSV(saveFileDialog.FileName, true);
+                        MessageBox.Show("La lista de materiales se guardó correctamente en: " + saveFileDialog.FileName);
+                    }else message = "Error al guardar la lista de materiales";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(message,"", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        //Metodo para cerrar formulario
+        private void buttonClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
+            // -TODO Verificar que en release no cierre el explorer o la utilización del add-in. En caso afirmativo cambiar a this.Close().
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar la aplicación");
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }        
     }
 }

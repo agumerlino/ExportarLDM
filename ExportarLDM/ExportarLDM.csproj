@@ -56,7 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Controllers\BOMExporterController.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Forms\ldmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,5 +71,6 @@
       <DependentUpon>ldmForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

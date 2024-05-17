@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|c:\\users\\disegno soft\\source\\repos\\exportarldm\\exportarldm\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|solutionrelative:exportarldm\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\exportarldm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|solutionrelative:exportarldm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\exportarldm\\forms\\ldmform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|c:\\users\\disegno soft\\source\\repos\\exportarldm\\exportarldm\\forms\\ldmform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|solutionrelative:exportarldm\\forms\\ldmform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\exportarldm\\controllers\\bomexportercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|solutionrelative:exportarldm\\controllers\\bomexportercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\exportarldm\\forms\\ldmform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|solutionrelative:exportarldm\\forms\\ldmform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\exportarldm\\forms\\ldmform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C57F775C-C2B9-465A-B97B-822952057282}|ExportarLDM\\ExportarLDM.csproj|solutionrelative:exportarldm\\forms\\ldmform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,19 +30,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ldmForm.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Forms\\ldmForm.cs",
               "RelativeDocumentMoniker": "ExportarLDM\\Forms\\ldmForm.cs",
               "ToolTip": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Forms\\ldmForm.cs [Dise\u00F1o]",
               "RelativeToolTip": "ExportarLDM\\Forms\\ldmForm.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T13:27:18.801Z",
+              "WhenOpened": "2024-05-17T15:44:33.729Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BOMExporterController.cs",
+              "DocumentMoniker": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Controllers\\BOMExporterController.cs",
+              "RelativeDocumentMoniker": "ExportarLDM\\Controllers\\BOMExporterController.cs",
+              "ToolTip": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Controllers\\BOMExporterController.cs",
+              "RelativeToolTip": "ExportarLDM\\Controllers\\BOMExporterController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwB8AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T14:15:15.159Z"
             },
             {
               "$type": "Document",
@@ -44,7 +64,7 @@
               "RelativeDocumentMoniker": "ExportarLDM\\Forms\\ldmForm.cs",
               "ToolTip": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Forms\\ldmForm.cs",
               "RelativeToolTip": "ExportarLDM\\Forms\\ldmForm.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAIAwwCYAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAG8AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-15T13:57:37.483Z",
               "EditorCaption": ""
@@ -52,15 +72,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Class1.cs",
-              "RelativeDocumentMoniker": "ExportarLDM\\Class1.cs",
-              "ToolTip": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Class1.cs",
-              "RelativeToolTip": "ExportarLDM\\Class1.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAqwDwAAABBAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Program.cs",
+              "RelativeDocumentMoniker": "ExportarLDM\\Program.cs",
+              "ToolTip": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Program.cs",
+              "RelativeToolTip": "ExportarLDM\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-08T15:06:26.809Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ldmForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Forms\\ldmForm.Designer.cs",
+              "RelativeDocumentMoniker": "ExportarLDM\\Forms\\ldmForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Disegno soft\\source\\repos\\ExportarLDM\\ExportarLDM\\Forms\\ldmForm.Designer.cs",
+              "RelativeToolTip": "ExportarLDM\\Forms\\ldmForm.Designer.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAnwEcAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T13:32:07.188Z"
             }
           ]
         }
