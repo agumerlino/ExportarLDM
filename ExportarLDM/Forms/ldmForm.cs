@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EPDM.Interop.epdm;
+using ExportarLDM.Utilities;
 
 
 // -TODO Se recomienda utilizar bloques try-catch para manejar posibles excepciones.
@@ -42,7 +43,8 @@ namespace ExportarLDM.Forms
         //Metedo que se ejecuta cuando se cambia la seleccion del combobox
         private void ComboBoxBoms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string message = "";
+            string messageError = "";
+            string messageOk = "";
             // Verifico si hay un item seleccionado en el combobox y habilito el boton Exportar segun corresponda
             bool itemSeleccionado = comboBoxBoms.SelectedItem != null;            
             buttonExportar.Enabled = itemSeleccionado;
@@ -55,23 +57,29 @@ namespace ExportarLDM.Forms
                 object ldmToExport = comboBoxBoms.SelectedItem;
                 
                     bomView = (IEdmBomView3)afile.GetComputedBOM(ldmToExport, 0, "", (int)EdmBomFlag.EdmBf_AsBuilt + (int)EdmBomFlag.EdmBf_ShowSelected);  
-                    if(bomView != null)
+                    if(bomView == null)
                     {
-                        message = "Error al obtener la lista de materiales seleccionada";
+                        messageError = $"Error al obtener la lista de materiales seleccionada {Environment.NewLine}";
+                    }
+                    else
+                    {
+                        messageOk = $"Lista de materiales obtenida correctamente: {ldmToExport} {Environment.NewLine}";
+                        Errors.ShowMessage(messageOk);    
                     }
                 }
             }            
             catch (Exception ex)
             {
-                MessageBox.Show(message,"", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine($"Error: {ex.Message}");
+                MessageBox.Show(messageError, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Errors.ShowError(ex);
             }
         }
 
         //Metodo que se ejecuta cuando se hace click en el boton Exportar
         private void buttonExportar_Click(object sender, EventArgs e)
         {
-            string message = "";
+            string messageError = "";
+            string messageOk = "";
             // Guardo la ldm en la ubicacion que desee el usuario
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Archivos CSV (*.csv)|*.csv";
@@ -80,19 +88,22 @@ namespace ExportarLDM.Forms
             DialogResult result = saveFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
-            {   // -TODO Se usa bomView sin verificar si es null, lo que podría causar una excepción si es null.
+            {   
+                // -TODO Se usa bomView sin verificar si es null, lo que podría causar una excepción si es null.
                 try
                 {
                     if (bomView != null)
                     {
                         bomView.SaveToCSV(saveFileDialog.FileName, true);
-                        MessageBox.Show("La lista de materiales se guardó correctamente en: " + saveFileDialog.FileName);
-                    }else message = "Error al guardar la lista de materiales";
+                        messageOk = $"La lista de materiales se guardó correctamente en: {saveFileDialog.FileName} {Environment.NewLine}";
+                        MessageBox.Show(messageOk);
+                        Errors.ShowMessage(messageOk);
+                    }else messageError = $"Error al guardar la lista de materiales {Environment.NewLine}";
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(message,"", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Console.WriteLine($"Error: {ex.Message}");
+                    MessageBox.Show(messageError, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Errors.ShowError(ex);
                 }
             }
         }
@@ -106,8 +117,8 @@ namespace ExportarLDM.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la aplicación");
-                Console.WriteLine($"Error: {ex.Message}");
+                MessageBox.Show($"Error al cerrar la aplicación {Environment.NewLine}");
+                Errors.ShowError(ex);
             }
         }        
     }

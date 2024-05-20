@@ -1,5 +1,6 @@
 ﻿using EPDM.Interop.epdm;
 using ExportarLDM.Forms;
+using ExportarLDM.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -12,9 +13,7 @@ using System.Windows.Forms;
 
 namespace ExportarLDM.Clases
 {
-    // Los console.writeline se van a agregar a un metodo posteriormente
-
-
+    // Agregue un - a los comentarios que fui resolviendo
     // -TODO Se sugiere modularizar el código para mejorar la mantenibilidad y la legibilidad.
     // -TODO Se recomienda dividir el código en componentes más pequeños y especializados.
     // -TODO Por ejemplo, se podría crear una clase para manejar la lógica de exportación de la lista de materiales.
@@ -38,45 +37,57 @@ namespace ExportarLDM.Clases
                 poInfo.mlRequiredVersionMinor = 0;
                 poCmdMgr.AddHook(EdmCmdType.EdmCmd_CardButton);
             }
-            // TODO Se recomienda loguear las excepciones para el desarrollador y proporcionar mensajes más amigables para el usuario final.
+            // -TODO Se recomienda loguear las excepciones para el desarrollador y proporcionar mensajes más amigables para el usuario final.
             
             catch (Exception ex)
             {
                 MessageBox.Show($"Error en la carga del complemento","", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine($"Error: {ex.Message}");
+                Errors.ShowError(ex);
             }            
         }   
 
         public void OnCmd(ref EdmCmd poCmd, ref EdmCmdData[] ppoData)
         {
-            string message = "";
+            string messageError = "";
+            string messageOk = "";
+            int idFile = 0;
             try
             {
                 IEdmVault11 vault = (IEdmVault11)poCmd.mpoVault;
                 if (vault == null)
                 {
-                    message = $"No se pudo obtener el vault {Environment.NewLine}";
+                    messageError = $"No se pudo obtener el vault {Environment.NewLine}";
                 }
-            
+                else
+                {
+                    messageOk = $"Vault obtenido correctamente: {vault.Name} {Environment.NewLine}";
+                    Errors.ShowMessage(messageOk);
+                }
                 if (poCmd.meCmdType == EdmCmdType.EdmCmd_CardButton)
                 {
                     //Obtengo el id del ensamblaje seleccionado
-                    int idFile = ppoData[0].mlObjectID1;
-                    if (vault == null)
+                    idFile = ppoData[0].mlObjectID1;
+                    if (idFile == 0)
                     {
-                        message += $"No se pudo obtener el id del archivo {Environment.NewLine}";
+                        messageError += $"No se pudo obtener el id del archivo {Environment.NewLine}";
+                    }
+                    else
+                    {
+                        messageOk = $"Id de archivo obtenido correctamente: {idFile}{Environment.NewLine}";
+                        Errors.ShowMessage(messageOk);
                     }
                     //Envio el id del archivo y el vault a la clase BOMExporter 
                     bomExporter = new BOMExporterController(vault);
-                    bomExporter.ExportBOM(idFile);                         
-                }
+                    bomExporter.ExportBOM(idFile);        
+
+                }                
             }
-            // TODO Se recomienda loguear las excepciones para el desarrollador y proporcionar mensajes más amigables para el usuario final.
+            // -TODO Se recomienda loguear las excepciones para el desarrollador y proporcionar mensajes más amigables para el usuario final.
             catch (Exception ex)
             {
-                MessageBox.Show(message, $"Error en la ejecucion del complemento", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine($"Error: {ex.Message}");
-            }            
+                MessageBox.Show(messageError, $"Error en la ejecucion del complemento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Errors.ShowError(ex);
+            }     
         }        
     }    
 }
